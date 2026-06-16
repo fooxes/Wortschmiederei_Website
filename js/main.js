@@ -119,37 +119,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------
      Smooth entrance animations
+     Content is visible by default; we only add a subtle
+     fade-up when the element scrolls into view. We never
+     leave anything permanently hidden (no JS = no problem).
      ---------------------------------------- */
-  if ('IntersectionObserver' in window) {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !prefersReduced) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('in-view');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll(
-      '.challenge-card, .service-card, .process-step, .testimonial-card, .offer-card, .workshop-card, .step-card'
-    ).forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = `opacity 0.5s ease ${i * 0.08}s, transform 0.5s ease ${i * 0.08}s`;
+      '.service-card, .process-step, .testimonial-card, .offer-card, .workshop-card, .step-card'
+    ).forEach((el) => {
+      el.classList.add('reveal');
       observer.observe(el);
     });
-
-    document.addEventListener('animationstart', (e) => {
-      if (e.target.classList.contains('visible')) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'none';
-      }
-    });
-
-    // Trigger visible class
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = '.visible { opacity: 1 !important; transform: none !important; }';
-    document.head.appendChild(styleSheet);
   }
 
 });
