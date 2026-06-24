@@ -142,4 +142,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ----------------------------------------
+     "Einfach mal machen" — YouTube video tabs
+     Each tab carries a data-video (YouTube ID or URL). Clicking
+     a tab loads that video into the frame. Until IDs are set, a
+     placeholder is shown.
+     ---------------------------------------- */
+  const videoTabs = document.querySelectorAll('.impulses .tag[role="tab"]');
+  const videoFrame = document.getElementById('impulse-video');
+
+  function youtubeId(v) {
+    if (!v) return '';
+    const m = v.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+    return m ? m[1] : v; // accept a bare 11-char id too
+  }
+
+  function showVideo(tab) {
+    if (!videoFrame) return;
+    const id = youtubeId(tab.getAttribute('data-video'));
+    if (id) {
+      videoFrame.innerHTML =
+        '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+        '" title="' + tab.textContent.trim() +
+        '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    } else {
+      videoFrame.innerHTML =
+        '<div class="video-placeholder">YouTube-Video folgt – sobald die Video-Links da sind, erscheint hier das passende Video.</div>';
+    }
+  }
+
+  if (videoTabs.length && videoFrame) {
+    videoTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        videoTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        tab.setAttribute('aria-selected', 'true');
+        showVideo(tab);
+      });
+    });
+    showVideo(document.querySelector('.impulses .tag[aria-selected="true"]') || videoTabs[0]);
+  }
+
 });
