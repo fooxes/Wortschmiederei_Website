@@ -144,42 +144,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------
      "Einfach mal machen" — YouTube video tabs
-     Each tab carries a data-video (YouTube ID or URL). Clicking
-     a tab loads that video into the frame. Until IDs are set, a
-     placeholder is shown.
+     Each tab shows a grid of video thumbnails; clicking a
+     thumbnail plays that video inline.
      ---------------------------------------- */
   const videoTabs = document.querySelectorAll('.impulses .tag[role="tab"]');
-  const videoFrame = document.getElementById('impulse-video');
 
-  function youtubeId(v) {
-    if (!v) return '';
-    const m = v.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
-    return m ? m[1] : v; // accept a bare 11-char id too
-  }
-
-  function showVideo(tab) {
-    if (!videoFrame) return;
-    const id = youtubeId(tab.getAttribute('data-video'));
+  // Lazy-load thumbnails from YouTube and wire click-to-play
+  document.querySelectorAll('.impulses .video-thumb').forEach(thumb => {
+    const id = thumb.getAttribute('data-video');
     if (id) {
-      videoFrame.innerHTML =
-        '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
-        '" title="' + tab.textContent.trim() +
-        '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-    } else {
-      videoFrame.innerHTML =
-        '<div class="video-placeholder">YouTube-Video folgt – sobald die Video-Links da sind, erscheint hier das passende Video.</div>';
+      thumb.style.backgroundImage = "url('https://i.ytimg.com/vi/" + id + "/hqdefault.jpg')";
     }
-  }
+    thumb.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.title = 'YouTube-Video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      thumb.innerHTML = '';
+      thumb.appendChild(iframe);
+    });
+  });
 
-  if (videoTabs.length && videoFrame) {
+  if (videoTabs.length) {
     videoTabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        videoTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        videoTabs.forEach(t => {
+          t.setAttribute('aria-selected', 'false');
+          const p = document.getElementById(t.getAttribute('data-panel'));
+          if (p) p.hidden = true;
+        });
         tab.setAttribute('aria-selected', 'true');
-        showVideo(tab);
+        const panel = document.getElementById(tab.getAttribute('data-panel'));
+        if (panel) panel.hidden = false;
       });
     });
-    showVideo(document.querySelector('.impulses .tag[aria-selected="true"]') || videoTabs[0]);
   }
 
 });
