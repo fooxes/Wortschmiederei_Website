@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
      Each tab shows a grid of video thumbnails; clicking a
      thumbnail plays that video inline.
      ---------------------------------------- */
-  const videoTabs = document.querySelectorAll('.impulses .tag[role="tab"]');
+  const videoTabs = document.querySelectorAll('.impulses [role="tab"]');
 
   // Lazy-load thumbnails from YouTube and wire click-to-play
   document.querySelectorAll('.impulses .video-thumb').forEach(thumb => {

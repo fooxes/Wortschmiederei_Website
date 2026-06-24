@@ -357,7 +357,9 @@ p:last-child {
    ---------------------------------------- */
 .hero {
   position: relative;
-  min-height: 90vh;
+  min-height: 100vh;
+  /* fill the full viewport: pull up under the fixed header */
+  margin-top: calc(-1 * var(--nav-height));
   display: flex;
   align-items: stretch;
   /* deep magenta with a subtle darkening toward the top-left */
@@ -437,7 +439,7 @@ p:last-child {
 
 /* Subpage hero — a touch shorter than the homepage hero */
 .hero--sub {
-  min-height: 68vh;
+  min-height: 100vh;
 }
 
 /* Subpage hero (smaller) */
@@ -703,6 +705,44 @@ p:last-child {
 
 .tag[aria-selected="false"]:hover {
   opacity: 0.75;
+}
+
+/* Segmented toggle (same optic as the header CTA button) */
+.seg-control {
+  display: inline-flex;
+  border: 2px solid var(--color-primary);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.seg {
+  appearance: none;
+  border: 0;
+  border-left: 1px solid var(--color-primary);
+  background: var(--color-white);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.6rem;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.seg:first-child {
+  border-left: 0;
+}
+
+.seg[aria-selected="true"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.seg[aria-selected="false"]:hover {
+  background: rgba(252, 19, 112, 0.08);
 }
 
 /* YouTube video gallery in "Einfach mal machen" */
@@ -1651,10 +1691,22 @@ main {
     text-align: center;
   }
 
+  /* Segmented toggle fits small screens */
+  .seg-control {
+    max-width: 100%;
+  }
+
+  .seg {
+    padding: 0.65rem 0.7rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+  }
+
   /* Hero mobile — stack text over photo */
   .hero {
     flex-direction: column;
     min-height: auto;
+    margin-top: 0;
   }
 
   .hero-content {
