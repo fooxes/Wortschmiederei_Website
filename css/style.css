@@ -366,13 +366,16 @@ p:last-child {
   background: linear-gradient(135deg, #9c0a50 0%, #c8106a 65%);
 }
 
-/* Photo fills the right ~60% with a hard vertical seam */
+/* Photo fills the right ~60% as a cover background (robust in all
+   browsers — an <img> flex item doesn't stretch reliably in Safari) */
 .hero-photo {
   order: 2;
   flex: 0 0 60%;
   width: 60%;
-  object-fit: cover;
-  object-position: center top;
+  align-self: stretch;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
 
 /* Text panel on the left ~40%; left edge aligns to the 1200px container */
