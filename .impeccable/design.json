@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-08T00:00:00Z",
+  "title": "Design System: Wortschmiederei",
+  "extensions": {
+    "colorMeta": {
+      "magenta": { "role": "primary", "displayName": "Schmiede-Magenta", "canonical": "#fc1370", "tonalRamp": ["#2b0a1a", "#5e0f33", "#90134c", "#c01060", "#fc1370", "#ff5293", "#ff97bd", "#ffd6e4"] },
+      "magenta-deep": { "role": "primary", "displayName": "Tiefes Magenta", "canonical": "#b41e86", "tonalRamp": ["#240a1b", "#451534", "#6b1f50", "#8f246b", "#b41e86", "#cf5ba6", "#e297c6", "#f3d4e6"] },
+      "ink": { "role": "neutral", "displayName": "Tinte", "canonical": "#353333", "tonalRamp": ["#0e0e0e", "#1c1b1b", "#2a2828", "#353333", "#5a5654", "#8a8482", "#bdb8b6", "#eae6e5"] },
+      "muted": { "role": "neutral", "displayName": "Gedämpft (Taupe)", "canonical": "#7c6f73" },
+      "surface": { "role": "neutral", "displayName": "Fläche", "canonical": "#f3f3f3", "tonalRamp": ["#3a3a3a", "#5f5f5f", "#878785", "#b4b2a9", "#d3d1c7", "#e6e4df", "#f3f3f3", "#ffffff"] },
+      "sand": { "role": "neutral", "displayName": "Sand", "canonical": "#eae6e5" },
+      "border": { "role": "neutral", "displayName": "Rahmen", "canonical": "#dddddd" },
+      "white": { "role": "neutral", "displayName": "Weiß", "canonical": "#ffffff" }
+    },
+    "typographyMeta": {
+      "hero": { "displayName": "Hero", "purpose": "Hero-H1, weiß auf Magenta, vertikal zentriert." },
+      "display": { "displayName": "Display / Headline", "purpose": "Sektions-H2." },
+      "body": { "displayName": "Body", "purpose": "Fließtext, ~65–75ch." },
+      "label": { "displayName": "Label", "purpose": "Uppercase: Header-CTA, Segment-Schalter, Tags." }
+    },
+    "shadows": [
+      { "name": "ambient", "value": "0 2px 20px rgba(0,0,0,0.08)", "purpose": "Ruhezustand abgesetzter Karten (Testimonials, Boxen)." },
+      { "name": "lift", "value": "0 12px 30px rgba(0,0,0,0.08)", "purpose": "Hover-Auftrieb von Service-Karten (mit translateY(-3px))." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "0.3s ease", "purpose": "Default für Farb-/Zustandsübergänge (--transition)." },
+      { "name": "reveal-fade-up", "value": "fadeUp 0.6s ease backwards", "purpose": "Einmaliges Einblenden beim Scrollen (sichtbar als Default, nur Enhancement)." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "1024px" },
+      { "name": "mobile", "value": "768px" },
+      { "name": "small", "value": "480px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Standard-CTA auf hellen Flächen (z. B. 'Mehr erfahren', 'Mach den ersten Schritt').",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Mehr erfahren</a>",
+      "css": ".ds-btn-primary{display:inline-block;background:#fc1370;color:#fff;font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.875rem;letter-spacing:0.05em;padding:0.85rem 2.2rem;border:2px solid #fc1370;border-radius:2px;text-decoration:none;transition:all .3s ease}.ds-btn-primary:hover{background:#fff;color:#fc1370}"
+    },
+    {
+      "name": "Hero Button (Light)",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "CTA auf der Magenta-Heldenfläche – weiß mit Magenta-Text, UPPERCASE.",
+      "html": "<a class=\"ds-btn-light\" href=\"#\">Kennenlern-Kaffee vereinbaren</a>",
+      "css": ".ds-btn-light{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:#fc1370;font-family:'Open Sans',sans-serif;font-weight:700;font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.85rem 2.2rem;border:2px solid #fff;border-radius:2px;text-decoration:none;transition:all .3s ease}.ds-btn-light:hover{background:transparent;color:#fff}"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "service-card",
+      "description": "Leistungs-Karte – flach in Ruhe, hebt sich bei Hover.",
+      "html": "<div class=\"ds-service-card\"><h3>Copywriting</h3><p>Komplexe Inhalte in klare, wirkungsvolle Texte übersetzen.</p><a class=\"ds-card-link\" href=\"#\">Mehr erfahren</a></div>",
+      "css": ".ds-service-card{background:#fff;border:1px solid #ddd;border-radius:4px;padding:2.5rem;display:flex;flex-direction:column;transition:box-shadow .3s ease,transform .3s ease}.ds-service-card:hover{box-shadow:0 12px 30px rgba(0,0,0,0.08);transform:translateY(-3px)}.ds-service-card h3{font-family:'Abril Fatface',Georgia,serif;font-weight:400;color:#000;font-size:1.4rem;margin:0 0 .9rem}.ds-service-card p{font-family:'Open Sans',sans-serif;color:#7c6f73;font-size:.95rem;line-height:1.6;margin:0 0 1.75rem;flex:1}.ds-card-link{align-self:flex-start;background:#fc1370;color:#fff;font:700 .875rem/1 'Open Sans',sans-serif;letter-spacing:.05em;padding:.85rem 2.2rem;border:2px solid #fc1370;border-radius:2px;text-decoration:none;transition:all .3s ease}.ds-card-link:hover{background:#fff;color:#fc1370}"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "chip",
+      "refersTo": "seg-control-active",
+      "description": "Zusammenhängender Umschalter (Video-Galerie) in Header-CTA-Optik.",
+      "html": "<div class=\"ds-seg\"><button class=\"ds-seg-btn\" aria-selected=\"true\">Storytelling</button><button class=\"ds-seg-btn\" aria-selected=\"false\">Speaker Coaching</button><button class=\"ds-seg-btn\" aria-selected=\"false\">Coaching</button></div>",
+      "css": ".ds-seg{display:inline-flex;border:2px solid #fc1370;border-radius:2px;overflow:hidden}.ds-seg-btn{border:0;border-left:1px solid #fc1370;background:#fff;color:#fc1370;font:700 .78rem/1 'Open Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:.75rem 1.6rem;cursor:pointer;transition:background .3s ease,color .3s ease}.ds-seg-btn:first-child{border-left:0}.ds-seg-btn[aria-selected=\"true\"]{background:#fc1370;color:#fff}.ds-seg-btn[aria-selected=\"false\"]:hover{background:rgba(252,19,112,0.08)}"
+    },
+    {
+      "name": "Workshop Tag",
+      "kind": "chip",
+      "refersTo": "workshop-tag",
+      "description": "Kategorie-Pille auf Workshop-/Format-Karten.",
+      "html": "<span class=\"ds-tag\">Change Story Workshop</span>",
+      "css": ".ds-tag{display:inline-block;background:#fc1370;color:#fff;font:700 .75rem/1 'Open Sans',sans-serif;letter-spacing:.05em;padding:.4rem 1.1rem;border-radius:2rem}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Formularfeld mit Magenta-Fokus.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"deine@email.de\">",
+      "css": ".ds-input{font-family:'Open Sans',sans-serif;font-size:.95rem;color:#353333;background:#fff;border:2px solid #ddd;border-radius:2px;padding:.85rem 1rem;outline:none;transition:border-color .3s ease}.ds-input:focus{border-color:#fc1370}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Die Wortschmiede",
+    "overview": "Eine Werkstatt, in der Worte geschmiedet werden. Schwarz-weiße Substanz – echte Reportage-Fotos, klare Sans-Texte, großzügige Display-Headlines – und ein einziger glühender Magenta-Akzent wie der Funke am Amboss. Selbstbewusst und klar, nie laut. Tiefe ist taktil: Karten ruhen flach und heben sich bei Berührung. Typografie trägt die Marke – es ist eine Wortschmiederei.",
+    "keyCharacteristics": [
+      "Schwarz-weiße Substanz, ein einziger glühender Magenta-Akzent",
+      "Display-Serif (Abril Fatface) gegen humanistische Sans (Open Sans)",
+      "Taktile Tiefe: flach in Ruhe, hebt sich bei Interaktion",
+      "Volle Viewport-Heroes mit hartem Magenta/Foto-Seam",
+      "Persönliche Du-Ansprache, echte Fotos statt Stockware"
+    ],
+    "rules": [
+      { "name": "Die Funken-Regel", "body": "Magenta ist der einzige gesättigte Ton. Im Hero flächig, sonst Akzent – nie zwei konkurrierende Magenta-Flächen pro Screen.", "section": "colors" },
+      { "name": "Die Wort-zuerst-Regel", "body": "Typografie trägt die Marke. Der Text muss allein tragen, bevor Effekt oder Grafik hinzukommt.", "section": "typography" },
+      { "name": "Die Anfassen-Regel", "body": "Tiefe ist eine Antwort auf Interaktion, kein Default. Karten sind in Ruhe flach und heben sich erst bei Hover/Fokus.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do Magenta (#fc1370) als einzigen gesättigten Akzent einsetzen – flächig nur im Hero.",
+      "Do echte Schwarz-Weiß-/Reportage-Fotos von Karin verwenden; den Menschen zeigen.",
+      "Do Abril Fatface für Headlines gegen Open Sans für Text setzen, Fließtext bei ~65–75ch.",
+      "Do Karten flach lassen und erst bei Hover anheben.",
+      "Do auf jeder Seite einen klaren Weg zum Kennenlern-Kaffee anbieten.",
+      "Do für Animationen eine prefers-reduced-motion-Alternative mitliefern."
+    ],
+    "donts": [
+      "Don't in generische Agentur-/SaaS-Template-Optik verfallen.",
+      "Don't kalt/corporate werden – die Du-Stimme bleibt.",
+      "Don't laut/verspielt dekorieren: keine Verlaufs-Texte, kein Glassmorphism-Default, keine sketchy SVG-Doodles, keine Streifen-Hintergründe.",
+      "Don't zwei konkurrierende Magenta-Flächen auf einem Screen stapeln.",
+      "Don't Seitenstreifen-Rahmen (>1px farbiger border-left/right) als Akzent nutzen.",
+      "Don't Karten überrunden (Radius >16px) – hier 4px.",
+      "Don't Fließtext in hellem Grau auf getöntem Weiß setzen (Kontrast ≥4.5:1, Tinte #353333)."
+    ]
+  }
+}
