@@ -642,7 +642,10 @@ p:last-child {
 }
 
 .about-spacer {
-  /* empty left column on desktop */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 340px;
 }
 
 .about-card {
@@ -1445,7 +1448,7 @@ p:last-child {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3.5rem;
-  align-items: center;
+  align-items: start;
 }
 
 .checklist {
