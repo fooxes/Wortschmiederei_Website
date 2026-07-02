@@ -18,11 +18,11 @@
    CSS Variables
    ---------------------------------------- */
 :root {
-  --color-primary: #fc1370;
+  --color-primary: #e30b60;
   --color-magenta: #b41e86;
   --color-black: #000000;
   --color-dark: #353333;
-  --color-muted: #7c6f73;
+  --color-muted: #6f6266;
   --color-light-bg: #f3f3f3;
   --color-sand: #eae6e5;
   --color-white: #ffffff;
@@ -69,6 +69,26 @@ a {
 
 a:hover, a:focus {
   color: var(--color-black);
+}
+
+/* Visible keyboard focus for all interactive elements (WCAG 2.4.7).
+   :focus-visible only shows for keyboard users, not mouse clicks. */
+a:focus-visible,
+button:focus-visible,
+[role="tab"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* On magenta / photo backgrounds the primary outline would vanish — use white. */
+.hero :focus-visible,
+.btn-light:focus-visible,
+.site-footer .btn:focus-visible {
+  outline-color: var(--color-white);
 }
 
 img {
@@ -880,6 +900,16 @@ p:last-child {
 
 .logo-track:hover {
   animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-track {
+    animation: none;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    row-gap: 2rem;
+  }
 }
 
 .logo-track img {
