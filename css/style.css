@@ -319,7 +319,7 @@ p:last-child {
 
 .nav-list a {
   display: block;
-  padding: 0.5rem 0.875rem;
+  padding: 0.75rem 0.875rem;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-dark);
@@ -1022,68 +1022,6 @@ p:last-child {
 }
 
 /* ----------------------------------------
-   Newsletter Section
-   ---------------------------------------- */
-.newsletter {
-  background: var(--color-primary);
-  padding: 4rem 0;
-  text-align: center;
-}
-
-.newsletter h2 {
-  color: var(--color-white);
-  max-width: 680px;
-  margin: 0 auto 2rem;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-}
-
-.newsletter-form {
-  display: flex;
-  gap: 0.75rem;
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-.newsletter-form input[type="email"] {
-  flex: 1;
-  padding: 0.85rem 1.25rem;
-  border: 2px solid rgba(255,255,255,0.4);
-  border-radius: 2px;
-  background: rgba(255,255,255,0.15);
-  color: var(--color-white);
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color var(--transition);
-}
-
-.newsletter-form input[type="email"]::placeholder {
-  color: rgba(255,255,255,0.6);
-}
-
-.newsletter-form input[type="email"]:focus {
-  border-color: var(--color-white);
-}
-
-.newsletter-form button {
-  padding: 0.85rem 1.75rem;
-  background: var(--color-white);
-  color: var(--color-primary);
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all var(--transition);
-  border-radius: 2px;
-}
-
-.newsletter-form button:hover {
-  background: var(--color-black);
-  color: var(--color-white);
-}
-
-/* ----------------------------------------
    Footer — light, minimal (matches live site)
    ---------------------------------------- */
 .site-footer {
@@ -1349,67 +1287,6 @@ p:last-child {
 }
 
 /* ----------------------------------------
-   Contact Form
-   ---------------------------------------- */
-.contact-section {
-  padding: 5rem 0;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.form-group label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-dark);
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  padding: 0.85rem 1rem;
-  border: 2px solid var(--color-border);
-  border-radius: 2px;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--color-dark);
-  background: var(--color-white);
-  outline: none;
-  transition: border-color var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  border-color: var(--color-primary);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 140px;
-}
-
-.form-required {
-  color: var(--color-primary);
-}
-
-/* ----------------------------------------
    Coaching: situation circles
    ---------------------------------------- */
 .situation-circles {
@@ -1643,11 +1520,6 @@ main {
     gap: 2.5rem;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
   .offer-cards {
     grid-template-columns: 1fr;
   }
@@ -1783,15 +1655,6 @@ main {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
-  }
-
-  .newsletter-form {
-    flex-direction: column;
-  }
-
-  .newsletter-form input[type="email"],
-  .newsletter-form button {
-    width: 100%;
   }
 
   .about-image::before {
