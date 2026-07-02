@@ -336,9 +336,9 @@ p:last-child {
   margin-left: 1rem;
 }
 
-/* Header CTA in ALL CAPS (Karin's request) */
+/* Header CTA — normal sentence case (per annotation) */
 .nav-cta .btn {
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 /* Mobile menu toggle */
@@ -419,6 +419,13 @@ p:last-child {
   line-height: 1.18;
 }
 
+/* Homepage headline is longer ("Gute Geschichten für / dein Business");
+   slightly smaller so the first line doesn't wrap in the hero panel. */
+.hero:not(.hero--sub) h1 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.22;
+}
+
 .hero p {
   color: rgba(255,255,255,0.95);
   font-size: 1.05rem;
@@ -426,11 +433,11 @@ p:last-child {
   margin-bottom: 2rem;
 }
 
-/* Hero buttons are uppercase to match the live site */
+/* Hero buttons — normal sentence case (per annotation) */
 .hero .btn {
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-size: 0.78rem;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-size: 0.875rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -450,12 +457,13 @@ p:last-child {
   z-index: 5;
 }
 
-/* Eyebrow line above subpage hero titles */
-.hero-eyebrow {
+/* Eyebrow line above subpage hero titles.
+   Scoped with .hero to override the generic `.hero p { margin-bottom: 2rem }`. */
+.hero .hero-eyebrow {
   color: var(--color-white);
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 2vw, 1.6rem);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   opacity: 0.95;
 }
 
@@ -556,9 +564,16 @@ p:last-child {
 /* ----------------------------------------
    Services Section
    ---------------------------------------- */
+/* Heading + intro share one 700px column, centered as a block
+   (text stays left-aligned). */
+.services-heading {
+  max-width: 700px;
+  margin: 0 auto 1.75rem;
+}
+
 .services-intro {
-  max-width: 760px;
-  margin-bottom: 3rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
 }
 
 .services-grid {
@@ -653,9 +668,15 @@ p:last-child {
   background: var(--color-light-bg);
 }
 
+/* Full-bleed: the photo spans the free width, the text column keeps its size. */
+.about > .container {
+  max-width: 100%;
+  padding: 0;
+}
+
 .about-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr minmax(400px, 570px);
   gap: 0;
   align-items: stretch;
 }
@@ -770,10 +791,13 @@ p:last-child {
   background: rgba(252, 19, 112, 0.08);
 }
 
-/* YouTube video gallery in "Einfach mal machen" */
+/* YouTube video gallery in "Einfach mal machen".
+   Flex + justify-center so panels with fewer than 4 videos sit centered
+   instead of clinging to the left edge. */
 .video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
   margin-top: 2.5rem;
   text-align: left;
@@ -785,6 +809,8 @@ p:last-child {
 
 .video-thumb {
   position: relative;
+  flex: 0 1 calc(25% - 1rem);
+  min-width: 240px;
   aspect-ratio: 16 / 9;
   border: 0;
   padding: 0;
@@ -961,6 +987,8 @@ p:last-child {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .star-rating {
@@ -1000,6 +1028,8 @@ p:last-child {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
 }
 
 .testimonial-author img {
@@ -1245,19 +1275,15 @@ p:last-child {
 .workshop-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-  background: var(--color-border);
-  border: 2px solid var(--color-border);
+  gap: 1.5rem;
   margin: 2.5rem 0;
 }
 
 .workshop-card {
   background: var(--color-white);
   padding: 2.5rem;
-}
-
-.workshop-card:hover {
-  background: var(--color-light-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .workshop-tag {
@@ -1344,9 +1370,21 @@ p:last-child {
   font-size: 1.4rem;
 }
 
+/* Coaching's 3-step block uses black step headings (per annotation) */
+.coach-steps:not(.coach-steps--6) .coach-step h3 {
+  color: var(--color-black);
+}
+
 .coach-step p {
   color: var(--color-muted);
   font-size: 0.92rem;
+}
+
+/* Speaker's 6-step grid uses the testimonial card look (white + shadow) */
+.coach-steps--6 .coach-step {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 /* Coaching: "Das bekommst du" — heading left, checklist right */
@@ -1367,8 +1405,9 @@ p:last-child {
   display: flex;
   gap: 0.85rem;
   align-items: center;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
+  background: var(--color-light-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   padding: 1rem 1.25rem;
   font-size: 0.95rem;
   color: var(--color-dark);
@@ -1387,7 +1426,9 @@ p:last-child {
 .contact-simple {
   min-height: 60vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 4rem 0;
 }
 
@@ -1546,55 +1587,37 @@ main {
     padding: 3.5rem 0;
   }
 
-  /* Nav mobile */
-  .nav-toggle {
-    display: flex;
+  /* Nav mobile — menu removed; only the CTA button remains, inline in the header */
+  .header-inner {
+    padding: 0 1rem;
+    gap: 0.75rem;
+  }
+
+  .site-logo img {
+    height: 34px;
   }
 
   .site-nav {
-    position: fixed;
-    top: var(--nav-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--color-white);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .site-nav.open {
-    transform: translateX(0);
-  }
-
-  .nav-list {
-    flex-direction: column;
-    width: 100%;
-    padding: 2rem;
-    gap: 0;
-  }
-
-  .nav-list a {
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    border-bottom: 1px solid var(--color-light-bg);
-    width: 100%;
-    text-align: center;
+    position: static;
+    transform: none;
+    background: none;
+    border-top: 0;
+    flex-direction: row;
   }
 
   .nav-cta {
-    margin: 2rem 0 0;
-    width: calc(100% - 4rem);
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 0;
+    width: auto;
   }
 
   .nav-cta .btn {
-    width: 100%;
+    width: auto;
+    max-width: 42vw;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    padding: 0.5rem 0.9rem;
+    white-space: normal;
     text-align: center;
   }
 
