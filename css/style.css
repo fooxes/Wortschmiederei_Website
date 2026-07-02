@@ -619,10 +619,6 @@ p:last-child {
 /* ----------------------------------------
    Process / Steps Section
    ---------------------------------------- */
-.process {
-  background: var(--color-white);
-}
-
 .process-steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -634,14 +630,6 @@ p:last-child {
 .process-step {
   text-align: center;
   padding: 2.5rem 2rem 3rem;
-  background: var(--color-white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-/* Copywriting process block on the light-grey surface (per annotation) */
-.process--light {
-  background: var(--color-light-bg);
 }
 
 .step-number {
@@ -1293,6 +1281,11 @@ p:last-child {
   box-shadow: var(--shadow);
 }
 
+.workshop-card h3 {
+  color: var(--color-primary);
+  padding-bottom: 30px;
+}
+
 .workshop-tag {
   display: inline-block;
   background: var(--color-primary);
@@ -1354,7 +1347,6 @@ p:last-child {
 }
 
 .coach-step {
-  background: var(--color-light-bg);
   padding: 2.25rem;
 }
 
@@ -1387,9 +1379,30 @@ p:last-child {
   font-size: 0.92rem;
 }
 
-/* Speaker's 6-step grid uses the testimonial card look (white + shadow) */
-.coach-steps--6 .coach-step {
+/* ============================================
+   CARD SYSTEM (background-driven, site-wide)
+   - White section:      sharp corners, light-grey border, no shadow
+   - Light-grey section: soft radius, no border, drop shadow
+   ============================================ */
+.testimonial-card,
+.service-card,
+.workshop-card,
+.coach-step,
+.process-step,
+.checklist li {
   background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.section--light .testimonial-card,
+.section--light .service-card,
+.section--light .workshop-card,
+.section--light .coach-step,
+.section--light .process-step,
+.section--light .checklist li {
+  border: none;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
@@ -1412,9 +1425,6 @@ p:last-child {
   display: flex;
   gap: 0.85rem;
   align-items: center;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
   padding: 1rem 1.25rem;
   font-size: 0.95rem;
   color: var(--color-dark);
