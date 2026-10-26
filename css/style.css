@@ -461,8 +461,9 @@ p:last-child {
    Scoped with .hero to override the generic `.hero p { margin-bottom: 2rem }`. */
 .hero .hero-eyebrow {
   color: var(--color-white);
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
   margin-bottom: 0.5rem;
   opacity: 0.95;
 }
@@ -569,6 +570,7 @@ p:last-child {
 .services-heading {
   max-width: 700px;
   margin: 0 auto 1.75rem;
+  color: #1e7a46;
 }
 
 .services-intro {
